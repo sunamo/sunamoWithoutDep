@@ -26,7 +26,8 @@ public class JavascriptSerialization : IJsSerializer
         switch (sl)
         {
             case SerializationLibrary.Microsoft:
-                 ThrowExceptionsMicrosoftSerializerNotSupported<object>();
+                systemTextJson = JsonSystemTextJson.instance;
+                //ThrowExceptionsMicrosoftSerializerNotSupported<object>();
                 break;
             case SerializationLibrary.Newtonsoft:
                 newtonSoft = JsonNewtonSoft.instance;
@@ -44,6 +45,7 @@ public class JavascriptSerialization : IJsSerializer
     {
         if (sl == SerializationLibrary.Microsoft)
         {
+            return systemTextJson.Serialize(o);
             return ThrowExceptionsMicrosoftSerializerNotSupported<string>();
             //return js.Serialize(o);
         }
@@ -85,7 +87,7 @@ public class JavascriptSerialization : IJsSerializer
             //return T;
             //return js.Deserialize<T>(o);
 
-            
+            return systemTextJson.Deserialize(o, targetType);
         }
         else if (sl == SerializationLibrary.Newtonsoft)
         {

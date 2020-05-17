@@ -27,5 +27,28 @@ public class SH
         return vr.Substring(0, vr.Length - d.Length);
     }
 
+        public static string Format2(string status, params object[] args)
+        {
+            if (string.IsNullOrWhiteSpace(status))
+            {
+                return string.Empty;
+            }
+            if (status.Contains(AllChars.lcub) && !status.Contains("{0}"))
+            {
+                return status;
+            }
+            else
+            {
+                try
+                {
+                    return string.Format(status, args);
+                }
+                catch (Exception ex)
+                {
+                    return status;
+                }
+            }
+        }
+
     }
 }
