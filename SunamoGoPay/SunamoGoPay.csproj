@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj" />
-    <ProjectReference Include="..\sunamo\sunamo.csproj" />
   </ItemGroup>
 
 </Project>
