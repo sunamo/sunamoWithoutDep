@@ -12,7 +12,7 @@ public class JavascriptSerialization : IJsSerializer
         /// Properties which could creating instance is useless
         /// single needed instance is creating in ctor
         /// </summary>
-    static JsonSystemTextJson systemTextJson = null;
+    static JsonNewtonSoft systemTextJson = null;
     static Type type = typeof(JavascriptSerialization);
     private SerializationLibrary sl = SerializationLibrary.Newtonsoft;
 
@@ -26,14 +26,14 @@ public class JavascriptSerialization : IJsSerializer
         switch (sl)
         {
             case SerializationLibrary.Microsoft:
-                systemTextJson = JsonSystemTextJson.instance;
+                systemTextJson = JsonNewtonSoft.instance;
                 //ThrowExceptionsMicrosoftSerializerNotSupported<object>();
                 break;
             case SerializationLibrary.Newtonsoft:
                 newtonSoft = JsonNewtonSoft.instance;
                 break;
             case SerializationLibrary.SystemTextJson:
-                systemTextJson = JsonSystemTextJson.instance;
+                systemTextJson = JsonNewtonSoft.instance;
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), sl);

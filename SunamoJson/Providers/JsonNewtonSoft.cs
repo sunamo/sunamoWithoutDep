@@ -14,6 +14,11 @@ public class JsonNewtonSoft : IJsSerializer
 
     }
 
+    public dynamic Deserialize(string o)
+    {
+        dynamic son = JsonConvert.DeserializeObject(o);
+        return son;
+    }
     public object Deserialize(string o, Type targetType)
     {
         return JsonConvert.DeserializeObject(o, targetType);
