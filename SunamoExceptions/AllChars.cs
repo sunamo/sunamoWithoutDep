@@ -7,5 +7,8 @@ namespace SunamoExceptions
     public class AllChars
     {
         public const string lcub = "{";
+        public const char lowbar = '_';
+        public const char dot = '.';
+        public const char dash = '-';
     }
 }

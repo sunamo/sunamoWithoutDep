@@ -1,4 +1,4 @@
-﻿ using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ public class SunamoFubuCsProjFileHelper
         sln = Solution.LoadFrom(item);
         
         var s = sln.Projects.Select(d => d.Project.FileName).ToList() ;
-        CA.ChangeContent(s, FS.AbsoluteFromCombinePath);
+        CA.ChangeContent(null,s, FS.AbsoluteFromCombinePath);
         return s;
     }
 

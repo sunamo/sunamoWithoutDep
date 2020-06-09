@@ -20,8 +20,6 @@ using System.IO;
         return icon;
     }
 
-    
-
     /// <summary>
     /// Not working
     /// Value cannot be null. (Parameter 'encoder')'
