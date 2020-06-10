@@ -126,7 +126,7 @@ static Type type = typeof(ThrowExceptions);
                 {
                     throw new Exception(exception);
                 }
-                ////////DebugLogger.Instance.WriteLine(exception);
+                //////////DebugLogger.Instance.WriteLine(exception);
 
                 return false;
             }
