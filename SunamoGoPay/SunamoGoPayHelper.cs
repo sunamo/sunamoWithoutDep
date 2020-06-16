@@ -29,12 +29,8 @@ public class SunamoGoPayHelper
 
     public SunamoGoPayHelper(GoPayData goPayData)
     {
-       
-
         this.goPayData = goPayData;
     }
-
-
 
     /// <summary>
     /// Return string error or Payment if success
@@ -106,6 +102,7 @@ Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD
         var status = token.PaymentStatus(paymentSessionId);
         return status;
     }
+
 
     public  Payment.SessionState IsPayed(long paymentSessionId)
     {
