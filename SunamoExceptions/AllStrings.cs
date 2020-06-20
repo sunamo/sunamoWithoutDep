@@ -10,5 +10,7 @@ namespace SunamoExceptions
     {
         public const string lowbar = "_";
         public const string colon = ":";
+        public const string dash = "-";
+        public const string space = " ";
     }
 }

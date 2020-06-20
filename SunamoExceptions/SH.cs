@@ -7,14 +7,50 @@ namespace SunamoExceptions
 { 
 public class SH
 {
-    /// <summary>
-    /// Will be delete after final refactoring
-    /// Automaticky ořeže poslední znad A1
-    /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
-    /// </summary>
-    /// <param name="delimiter"></param>
-    /// <param name="parts"></param>
-    public static string Join(IEnumerable parts, object delimiter)
+        /// <summary>
+        /// If null, return Consts.nulled
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static string NullToStringOrDefault(object n)
+        {
+            return NullToStringOrDefault(n, null);
+        }
+
+        /// <summary>
+        /// If null, return Consts.nulled
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static string NullToStringOrDefault(object n, string v)
+        {
+            if (v == null)
+            {
+                if (n == null)
+                {
+                    v = Consts.nulled;
+                }
+                else
+                {
+                    v = n.ToString();
+                }
+            }
+            if (n != null)
+            {
+                return AllStrings.space + v;
+            }
+            return " " + Consts.nulled;
+        }
+
+        /// <summary>
+        /// Will be delete after final refactoring
+        /// Automaticky ořeže poslední znad A1
+        /// Pokud máš inty v A2, použij metodu JoinMakeUpTo2NumbersToZero
+        /// </summary>
+        /// <param name="delimiter"></param>
+        /// <param name="parts"></param>
+        public static string Join(IEnumerable parts, object delimiter)
     {
         var d = delimiter.ToString();
 
