@@ -10,5 +10,6 @@ public enum SerializationLibrary
     /// </summary>
     Microsoft,
     Newtonsoft,
-    SystemTextJson
+    SystemTextJson,
+    JsonDanielCrenna
 }

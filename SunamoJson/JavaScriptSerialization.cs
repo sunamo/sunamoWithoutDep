@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Json;
+
 using SunamoExceptions;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,14 @@ using System.Runtime.Serialization.Json;
 
 public class JavascriptSerialization : IJsSerializer
 {
-    static JsonNewtonSoft newtonSoft = null;
+    static IJsSerializer newtonSoft = null;
         /// <summary>
         /// Properties which could creating instance is useless
         /// single needed instance is creating in ctor
         /// </summary>
-    static JsonNewtonSoft systemTextJson = null;
+    static IJsSerializer systemTextJson = null;
+    static IJsSerializer microsoft = null;
+    static IJsSerializer danielCrenna = null;
     static Type type = typeof(JavascriptSerialization);
     private SerializationLibrary sl = SerializationLibrary.Newtonsoft;
 
@@ -26,14 +29,17 @@ public class JavascriptSerialization : IJsSerializer
         switch (sl)
         {
             case SerializationLibrary.Microsoft:
-                systemTextJson = JsonNewtonSoft.instance;
+                microsoft = JsonDanielCrenna.instance;
                 //ThrowExceptionsMicrosoftSerializerNotSupported<object>();
                 break;
             case SerializationLibrary.Newtonsoft:
-                newtonSoft = JsonNewtonSoft.instance;
+                newtonSoft = JsonDanielCrenna.instance;
                 break;
             case SerializationLibrary.SystemTextJson:
-                systemTextJson = JsonNewtonSoft.instance;
+                systemTextJson = JsonDanielCrenna.instance;
+                break;
+            case SerializationLibrary.JsonDanielCrenna:
+                danielCrenna = JsonDanielCrenna.instance;
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), sl);
@@ -41,27 +47,59 @@ public class JavascriptSerialization : IJsSerializer
         }
     }
 
-    public string Serialize(object o)
+    public string Serialize<T>(T o)
     {
-        if (sl == SerializationLibrary.Microsoft)
-        {
-            return systemTextJson.Serialize(o);
-            return ThrowExceptionsMicrosoftSerializerNotSupported<string>();
-            //return js.Serialize(o);
-        }
-        else if (sl == SerializationLibrary.Newtonsoft)
-        {
-            return newtonSoft.Serialize(o);
-        }
-        else if (sl == SerializationLibrary.SystemTextJson)
-        {
-            return systemTextJson.Serialize(o);
-        }
-        else
-        {
-            return NotSupportedElseIfClasule<string>("Serialize");
-        }
+        //if (sl == SerializationLibrary.JsonDanielCrenna)
+        //{
+            // must be called as static, otherwise during serialize return empty string
+            return JsonParser.Serialize<T>(o);
+        //}
+        //else if (sl == SerializationLibrary.Microsoft)
+        //{
+        //    return systemTextJson.Serialize(o);
+        //    return ThrowExceptionsMicrosoftSerializerNotSupported<string>();
+        //    //return js.Serialize(o);
+        //}
+        //else if (sl == SerializationLibrary.Newtonsoft)
+        //{
+        //    return newtonSoft.Serialize(o);
+        //}
+        //else if (sl == SerializationLibrary.SystemTextJson)
+        //{
+        //    return systemTextJson.Serialize(o);
+        //}
+        //else
+        //{
+        //    return NotSupportedElseIfClasule<string>("Serialize");
+        //}
     }
+
+    //public string Serialize(object o)
+    //{
+    //    if (sl == SerializationLibrary.JsonDanielCrenna)
+    //    {
+    //        // must be called as static, otherwise during serialize return empty string
+    //        return JsonParser.Serialize(o);
+    //    }
+    //    else if (sl == SerializationLibrary.Microsoft)
+    //    {
+    //        return systemTextJson.Serialize(o);
+    //        return ThrowExceptionsMicrosoftSerializerNotSupported<string>();
+    //        //return js.Serialize(o);
+    //    }
+    //    else if (sl == SerializationLibrary.Newtonsoft)
+    //    {
+    //        return newtonSoft.Serialize(o);
+    //    }
+    //    else if (sl == SerializationLibrary.SystemTextJson)
+    //    {
+    //        return systemTextJson.Serialize(o);
+    //    }
+    //    else
+    //    {
+    //        return NotSupportedElseIfClasule<string>("Serialize");
+    //    }
+    //}
 
     private T ThrowExceptionsMicrosoftSerializerNotSupported<T>()
     {
@@ -77,7 +115,11 @@ public class JavascriptSerialization : IJsSerializer
 
     public object Deserialize(String o, Type targetType)
     {
-        if (sl == SerializationLibrary.Microsoft)
+        if (sl == SerializationLibrary.JsonDanielCrenna)
+        {
+            return danielCrenna.Deserialize(o, targetType);
+        }
+        else if (sl == SerializationLibrary.Microsoft)
         {
             //JsonConvert.DeserializeObject()
             //JsonValue.
@@ -87,7 +129,7 @@ public class JavascriptSerialization : IJsSerializer
             //return T;
             //return js.Deserialize<T>(o);
 
-            return systemTextJson.Deserialize(o, targetType);
+            return microsoft.Deserialize(o, targetType);
         }
         else if (sl == SerializationLibrary.Newtonsoft)
         {

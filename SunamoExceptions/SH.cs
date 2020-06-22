@@ -8,6 +8,26 @@ namespace SunamoExceptions
 public class SH
 {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nazevPP"></param>
+        /// <param name="only"></param>
+        public static string FirstCharUpper(string nazevPP, bool only = false)
+        {
+            if (nazevPP != null)
+            {
+                string sb = nazevPP.Substring(1);
+                if (only)
+                {
+                    sb = sb.ToLower();
+                }
+                return nazevPP[0].ToString().ToUpper() + sb;
+            }
+            return null;
+        }
+
+
+        /// <summary>
         /// If null, return Consts.nulled
         /// </summary>
         /// <param name="n"></param>

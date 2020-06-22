@@ -4,11 +4,12 @@ using System.Text;
 
 public interface IJsSerializer
 {
-    string Serialize(object o);
+    //string Serialize(object o);
     object Deserialize(String o, Type targetType);
 }
 
 public interface IJsSerializer<T> : IJsSerializer
 {
-    T Deserialize<T>(String o);
+    string Serialize<T>(T o);
+    //T Deserialize<T>(String o);
 }

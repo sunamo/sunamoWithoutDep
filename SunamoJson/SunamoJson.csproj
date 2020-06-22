@@ -10,9 +10,4 @@
   <ItemGroup>
     <ProjectReference Include="..\SunamoExceptions\SunamoExceptions.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\sunamo\dll\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 </Project>
