@@ -12,7 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xlf", "..\sunamo\Xlf\Xlf.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newtonsoft.Json", "Newtonsoft.Json\Newtonsoft.Json.csproj", "{4007B730-DCF1-4002-8D43-2A2F709BA4A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newtonsoft.Json2", "Newtonsoft.Json2\Newtonsoft.Json2.csproj", "{05308F39-9B8B-4EE6-AA2A-B91E03363D9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newtonsoft.Json2", "Newtonsoft.Json2\Newtonsoft.Json2.csproj", "{05308F39-9B8B-4EE6-AA2A-B91E03363D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinSec", "WinSec\WinSec.csproj", "{F9251321-D780-44B1-B590-5CB9D34FB724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{05308F39-9B8B-4EE6-AA2A-B91E03363D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05308F39-9B8B-4EE6-AA2A-B91E03363D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05308F39-9B8B-4EE6-AA2A-B91E03363D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9251321-D780-44B1-B590-5CB9D34FB724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9251321-D780-44B1-B590-5CB9D34FB724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9251321-D780-44B1-B590-5CB9D34FB724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9251321-D780-44B1-B590-5CB9D34FB724}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

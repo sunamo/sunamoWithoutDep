@@ -6,10 +6,11 @@ public interface IJsSerializer
 {
     //string Serialize(object o);
     object Deserialize(String o, Type targetType);
+    string Serialize<T>(T o);
 }
 
 public interface IJsSerializer<T> : IJsSerializer
 {
-    string Serialize<T>(T o);
+    
     //T Deserialize<T>(String o);
 }

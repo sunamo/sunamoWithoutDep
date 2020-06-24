@@ -1,6 +1,4 @@
-﻿using Json;
-
-using SunamoExceptions;
+﻿using SunamoExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +7,14 @@ using System.Runtime.Serialization.Json;
 public class JavascriptSerialization : IJsSerializer
 {
     static IJsSerializer newtonSoft = null;
-        /// <summary>
+    /// <summary>
         /// Properties which could creating instance is useless
         /// single needed instance is creating in ctor
         /// </summary>
     static IJsSerializer systemTextJson = null;
     static IJsSerializer microsoft = null;
     static IJsSerializer danielCrenna = null;
+    static IJsSerializer utf8json = null;
     static Type type = typeof(JavascriptSerialization);
     private SerializationLibrary sl = SerializationLibrary.Newtonsoft;
 
@@ -29,17 +28,20 @@ public class JavascriptSerialization : IJsSerializer
         switch (sl)
         {
             case SerializationLibrary.Microsoft:
-                microsoft = JsonDanielCrenna.instance;
+                utf8json = JsonUtf8Json.instance;
                 //ThrowExceptionsMicrosoftSerializerNotSupported<object>();
                 break;
             case SerializationLibrary.Newtonsoft:
-                newtonSoft = JsonDanielCrenna.instance;
+                utf8json = JsonUtf8Json.instance;
                 break;
             case SerializationLibrary.SystemTextJson:
-                systemTextJson = JsonDanielCrenna.instance;
+                utf8json = JsonUtf8Json.instance;
                 break;
             case SerializationLibrary.JsonDanielCrenna:
-                danielCrenna = JsonDanielCrenna.instance;
+                utf8json = JsonUtf8Json.instance;
+                break;
+            case SerializationLibrary.Utf8Json:
+                utf8json = JsonUtf8Json.instance;
                 break;
             default:
                 ThrowExceptions.NotImplementedCase(Exc.GetStackTrace(), type, Exc.CallingMethod(), sl);
@@ -49,10 +51,11 @@ public class JavascriptSerialization : IJsSerializer
 
     public string Serialize<T>(T o)
     {
+        return utf8json.Serialize(o);
         //if (sl == SerializationLibrary.JsonDanielCrenna)
         //{
             // must be called as static, otherwise during serialize return empty string
-            return JsonParser.Serialize<T>(o);
+            //return JsonParser.Serialize<T>(o);
         //}
         //else if (sl == SerializationLibrary.Microsoft)
         //{
@@ -115,7 +118,11 @@ public class JavascriptSerialization : IJsSerializer
 
     public object Deserialize(String o, Type targetType)
     {
-        if (sl == SerializationLibrary.JsonDanielCrenna)
+        if (sl == SerializationLibrary.Utf8Json)
+        {
+            return utf8json.Deserialize(o, targetType);
+        }
+        else if (sl == SerializationLibrary.JsonDanielCrenna)
         {
             return danielCrenna.Deserialize(o, targetType);
         }
