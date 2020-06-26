@@ -124,7 +124,7 @@ public class JavascriptSerialization : IJsSerializer
         }
         else if (sl == SerializationLibrary.JsonDanielCrenna)
         {
-            return danielCrenna.Deserialize(o, targetType);
+            return utf8json.Deserialize(o, targetType);
         }
         else if (sl == SerializationLibrary.Microsoft)
         {
@@ -136,15 +136,15 @@ public class JavascriptSerialization : IJsSerializer
             //return T;
             //return js.Deserialize<T>(o);
 
-            return microsoft.Deserialize(o, targetType);
+            return utf8json.Deserialize(o, targetType);
         }
         else if (sl == SerializationLibrary.Newtonsoft)
         {
-            return newtonSoft.Deserialize(o, targetType);
+            return utf8json.Deserialize(o, targetType);
         }
         else if (sl == SerializationLibrary.SystemTextJson)
         {
-            return systemTextJson.Deserialize(o, targetType);
+            return utf8json.Deserialize(o, targetType);
         }
         return NotSupportedElseIfClasule<object>("Serialize(String,Type)");
     }

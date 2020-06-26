@@ -8,6 +8,8 @@ using FubuCsProjFile;
 
 public class SunamoFubuCsProjFileHelper
 {
+    static Type type = typeof(SunamoFubuCsProjFileHelper);
+
     public static List<string> GetProjectsInSlnFile(string item, ref Solution sln)
     {
         sln = Solution.LoadFrom(item);
@@ -62,4 +64,6 @@ public class SunamoFubuCsProjFileHelper
             TF.SaveFile(text, csproj);
         }
     }
+
+    
 }
