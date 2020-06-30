@@ -2,6 +2,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>_\opensource.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -18,5 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SunamoExceptions\SunamoExceptions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_\Formatters\" />
+    <Folder Include="_\Internal\DoubleConversion\" />
+    <Folder Include="_\Internal\Emit\" />
+    <Folder Include="_\Resolvers\" />
   </ItemGroup>
 </Project>

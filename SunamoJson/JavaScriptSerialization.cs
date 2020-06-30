@@ -106,13 +106,13 @@ public class JavascriptSerialization : IJsSerializer
 
     private T ThrowExceptionsMicrosoftSerializerNotSupported<T>()
     {
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps" + ".");
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "System.Web.Scripting.Serialization.JavaScriptSerializer is not supported in Windows Store Apps.");
         return default(T);
     }
 
     private T NotSupportedElseIfClasule<T>(string v)
     {
-        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Else if with enum value" + " " + sl + " " + "in JavascriptSerialization" + "." + v);
+        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "Else if with enum value " + sl + " in JavascriptSerialization." + v);
         return default(T);
     }
 
