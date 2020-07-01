@@ -59,7 +59,7 @@ public class SunamoGoPayHelper
     private  GPConnector GetToken()
     {
         GPConnector token;
-        GPConnector connector = new GPConnector("https://gw.sandbox.gopay.com/api", goPayData.ClientID, goPayData.ClientSecret);
+        GPConnector connector = new GPConnector(GoConsts.apiUri, goPayData.ClientID, goPayData.ClientSecret);
 
         // volá na /api/oauth2/token
         token = connector.GetAppToken();
