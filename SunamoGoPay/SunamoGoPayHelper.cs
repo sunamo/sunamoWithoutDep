@@ -52,7 +52,7 @@ public class SunamoGoPayHelper
         }
         catch (GPClientException e)
         {
-            return YamlHelper.DumpAsYaml(e);
+            return RH.DumpAsString("e", e, DumpProvider.Reflection);
         }
     }
 
