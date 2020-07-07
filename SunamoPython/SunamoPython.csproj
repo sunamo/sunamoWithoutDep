@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\sunamo\sunamo.csproj" />
+    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Scripting">
