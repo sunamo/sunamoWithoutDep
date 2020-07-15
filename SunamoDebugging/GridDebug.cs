@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 public class GridDebug
@@ -12,7 +13,7 @@ public class GridDebug
     {
         foreach (var item in g.RowDefinitions)
         {
-            Debug.WriteLine("rd ActualHeight: " + item.ActualHeight);
+            d("rd ActualHeight: " + item.ActualHeight);
         }
     }
 
@@ -20,8 +21,20 @@ public class GridDebug
     {
         foreach (var item in g.ColumnDefinitions)
         {
-            Debug.WriteLine("rd ActualHeight: " + item.ActualWidth);
+            d("rd ActualHeight: " + item.ActualWidth);
         }
     }
 
+    public static void PrintRowsAndColumnsOfAllChildrens(Grid g)
+    {
+        foreach (FrameworkElement item in g.Children)
+        {
+            d(item.Name + ": " + Grid.GetRow(item) + ", " + Grid.GetColumn(item));
+        }
+    }
+
+    static void d(string s)
+    {
+        Debug.WriteLine(s);
+    }
 }
