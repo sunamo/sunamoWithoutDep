@@ -15,13 +15,13 @@ namespace forms
     /// </summary>
     public class ContextMenuHelper
     {
-        public static ContextMenu Get(VoidObjectEventArgs onQuit)
+        public static ContextMenu Get(string quitS, VoidObjectEventArgs onQuit)
         {
             ContextMenu cm = new ContextMenu();
 
             if (onQuit != null)
             {
-                cm.MenuItems.Add(MenuItemHelper.Get("Quit", onQuit));
+                cm.MenuItems.Add(MenuItemHelper.Get(quitS, onQuit));
             }
             
 

@@ -30,8 +30,8 @@ namespace SunamoTray
 
             ni.Click += new EventHandler( onDoubleClick);
 
-            var mi = MenuItemHelper.Get("Quit", Quit);
-            ni.ContextMenu.MenuItems.Add(mi);
+            //var mi = MenuItemHelper.Get(quitS, Quit);
+            //ni.ContextMenu.MenuItems.Add(mi);
             if (contextMenuItems != null)
             {
                 foreach (var item in contextMenuItems)
