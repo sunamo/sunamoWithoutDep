@@ -13,7 +13,7 @@ using GoPay.Model.Payments;
 using static GoPay.Model.Payments.Target;
 
 public class SunamoGoPayHelper
-    {
+{
     GoPayData goPayData = null;
     static Type type = typeof(SunamoGoPayHelper);
     public static Dictionary<SessionStateGoPay, string> stateToString = new Dictionary<SessionStateGoPay, string>();
@@ -35,7 +35,6 @@ public class SunamoGoPayHelper
     /// <summary>
     /// Return string error or Payment if success
     /// have GwUrl Property
-    /// 
     /// </summary>
     /// <param name="payment"></param>
     /// <returns></returns>
