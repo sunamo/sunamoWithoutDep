@@ -23,6 +23,18 @@ static Type type = typeof(ThrowExceptions);
             ThrowIsNotNull(stacktrace, Exceptions.KeyNotFound(FullNameOfExecutedCode(type, v), en, dictName, key));
         }
 
+        public static void IsNotWindowsPathFormat(string stacktrace, object type, string methodName, string argName, string argValue)
+        {
+            ThrowIsNotNull(stacktrace, Exceptions.IsNotWindowsPathFormat(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
+        }
+
+        public static void IsNullOrEmpty(string stacktrace, object type, string methodName, string argName, string argValue)
+        {
+            ThrowIsNotNull(stacktrace, Exceptions.IsNullOrEmpty(FullNameOfExecutedCode(type, methodName, true), argName, argValue));
+        }
+
+        
+
         /// <summary>
         /// Verify whether A3 contains A4
         /// true if everything is OK

@@ -6,6 +6,8 @@ namespace SunamoExceptions
 {
     public class Exceptions
     {
+        public static bool RaiseIsNotWindowsPathFormat;
+
         #region For easy copy in SunamoException project
         public static object KeyNotFound<T, U>(string v, IDictionary<T, U> en, string dictName, T key)
         {
@@ -100,5 +102,61 @@ namespace SunamoExceptions
             return before + ": ";
         }
         #endregion
+
+
+        public static object IsNotWindowsPathFormat(string before, string argName, string argValue)
+        {
+            if (RaiseIsNotWindowsPathFormat)
+            {
+                var badFormat = !FS.IsWindowsPathFormat(argValue);
+
+                if (badFormat)
+                {
+                    return CheckBefore(before) + " " + argName + " " + sess.i18n(XlfKeys.isNotInWindowsPathFormat);
+                }
+            }
+
+            return null;
+        }
+
+
+        public static string IsNullOrEmpty(string before, string argName, string argValue)
+        {
+            string addParams = null;
+
+            if (argValue == null)
+            {
+                addParams = AddParams();
+                return CheckBefore(before) + argName + " is null" + addParams;
+            }
+            else if (argValue == string.Empty)
+            {
+                addParams = AddParams();
+                return CheckBefore(before) + argName + " is empty (without trim)" + addParams;
+            }
+            else if (argValue.Trim() == string.Empty)
+            {
+                addParams = AddParams();
+                return CheckBefore(before) + argName + " is empty (with trim)" + addParams;
+            }
+
+            return null;
+        }
+        public static StringBuilder sbAdditionalInfoInner = new StringBuilder();
+        public static StringBuilder sbAdditionalInfo = new StringBuilder();
+        private static string AddParams()
+        {
+            sbAdditionalInfo.Insert(0, Environment.NewLine);
+            sbAdditionalInfo.Insert(0, "Outer:");
+            sbAdditionalInfo.Insert(0, Environment.NewLine);
+
+            sbAdditionalInfoInner.Insert(0, Environment.NewLine);
+            sbAdditionalInfoInner.Insert(0, "Inner:");
+            sbAdditionalInfoInner.Insert(0, Environment.NewLine);
+
+            var addParams = sbAdditionalInfo.ToString();
+            var addParamsInner = sbAdditionalInfoInner.ToString();
+            return addParams + addParamsInner;
+        }
     }
 }
