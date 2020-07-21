@@ -9,8 +9,14 @@ namespace SunamoExceptions
 {
     public class Exc
     {
-        #region For easy copy in SunamoException project
+        /// <summary>
+        /// Is setting in SpecialFoldersHelper.aspnet
+        /// value holder for all aspnet projects
+        /// </summary>
         public static bool aspnet = false;
+
+        #region For easy copy in SunamoException project
+
         static StringBuilder sb = new StringBuilder();
 
         /// <summary>
