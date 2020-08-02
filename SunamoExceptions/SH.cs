@@ -2,11 +2,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+
 namespace SunamoExceptions
 { 
 public class SH
 {
+        public static string WrapWithQm(string commitMessage)
+        {
+            return SH.WrapWith(commitMessage, AllChars.qm);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string WrapWith(string value, char v, bool _trimWrapping = false)
+        {
+            // TODO: Make with StringBuilder, because of SH.WordAfter and so
+            return WrapWith(value, v.ToString());
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string WrapWith(string value, string h, bool _trimWrapping = false)
+        {
+            return h + SH.Trim(value, h) + h;
+        }
+
+        public static string TrimStart(string v, string s)
+        {
+            while (v.StartsWith(s))
+            {
+                v = v.Substring(s.Length);
+            }
+            return v;
+        }
+
+        public static string TrimEnd(string name, string ext)
+        {
+            while (name.EndsWith(ext))
+            {
+                return name.Substring(0, name.Length - ext.Length);
+            }
+            return name;
+        }
+
+        public static string Trim(string s, string args)
+        {
+            s = TrimStart(s, args);
+            s = TrimEnd(s, args);
+
+            return s;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -72,6 +118,11 @@ public class SH
         /// <param name="parts"></param>
         public static string Join(IEnumerable parts, object delimiter)
     {
+            if (CA.Count(parts) == 0)
+            {
+                return string.Empty;
+            }
+
         var d = delimiter.ToString();
 
         StringBuilder sb = new StringBuilder();

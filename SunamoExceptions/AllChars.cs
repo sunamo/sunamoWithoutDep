@@ -10,5 +10,6 @@ namespace SunamoExceptions
         public const char lowbar = '_';
         public const char dot = '.';
         public const char dash = '-';
+        public const char qm = '"';
     }
 }

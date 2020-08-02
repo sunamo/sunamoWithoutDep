@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypting", "..\Credentials\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scz", "..\Credentials\Scz\Scz.csproj", "{6C7711BA-100C-4991-9BE0-D593E4631B5E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoVcf", "SunamoVcf\SunamoVcf.csproj", "{C60C2D2F-374A-45F8-9A8A-1EB54032F9E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{6C7711BA-100C-4991-9BE0-D593E4631B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C7711BA-100C-4991-9BE0-D593E4631B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C7711BA-100C-4991-9BE0-D593E4631B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60C2D2F-374A-45F8-9A8A-1EB54032F9E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60C2D2F-374A-45F8-9A8A-1EB54032F9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60C2D2F-374A-45F8-9A8A-1EB54032F9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60C2D2F-374A-45F8-9A8A-1EB54032F9E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
