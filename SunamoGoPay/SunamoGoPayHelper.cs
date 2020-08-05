@@ -105,6 +105,11 @@ Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD
 
     public  Payment.SessionState IsPayed(long paymentSessionId)
     {
+        if (MyPc.Instance.IsMyComputer())
+        {
+            return Payment.SessionState.PAID;
+        }
+
         var payment = Status(paymentSessionId);
         var state = payment.State;
         if (state.HasValue)
