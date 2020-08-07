@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\BitBucket\_comgate\.NET-ComGateAPI\THsoftware.ComGate.Core\THsoftware.ComGate.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\BitBucket\_comgate\.NET-ComGateAPI\THsoftware.ComGate.PaymentAPI.Interfaces\THsoftware.ComGate.PaymentAPI.Interfaces.csproj" />
+    <ProjectReference Include="..\..\..\..\BitBucket\_comgate\.NET-ComGateAPI\THsoftware.ComGate.PaymentAPI.Services\THsoftware.ComGate.PaymentAPI.Services.csproj" />
+  </ItemGroup>
+
+</Project>

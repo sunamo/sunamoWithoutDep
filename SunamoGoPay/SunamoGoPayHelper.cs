@@ -12,7 +12,7 @@ using GoPay.Model.Payment;
 using GoPay.Model.Payments;
 using static GoPay.Model.Payments.Target;
 
-public class SunamoGoPayHelper
+public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Payment, long, Payment.SessionState>
 {
     GoPayData goPayData = null;
     static Type type = typeof(SunamoGoPayHelper);
@@ -55,7 +55,7 @@ public class SunamoGoPayHelper
         }
     }
 
-    private  GPConnector GetToken()
+    private GPConnector GetToken()
     {
         GPConnector token;
         GPConnector connector = new GPConnector(GoConsts.apiUri, goPayData.ClientID, goPayData.ClientSecret);
@@ -65,7 +65,7 @@ public class SunamoGoPayHelper
         return token;
     }
 
-    public  Payment Status(long paymentSessionId)
+    public Payment Status(long paymentSessionId)
     {
         var token = GetToken();
 
@@ -102,8 +102,7 @@ Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD
         return status;
     }
 
-
-    public  Payment.SessionState IsPayed(long paymentSessionId)
+    public Payment.SessionState IsPayed(long paymentSessionId)
     {
         if (MyPc.Instance.IsMyComputer())
         {
@@ -228,7 +227,7 @@ Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD
                                 secureKey));
 
         string sessionEncryptedSignature = Encrypt(
-                       hash ,
+                       hash,
                              secureKey);
 
         return hash;
