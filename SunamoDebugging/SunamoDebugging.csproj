@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="FrameworkElementDebug.cs" />
     <Compile Include="GridDebug.cs" />
+    <Compile Include="NameValueCollectionDebug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringBuilderDebug.cs" />
   </ItemGroup>
