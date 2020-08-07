@@ -9,9 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\BitBucket\_comgate\.NET-ComGateAPI\THsoftware.ComGate.Core\THsoftware.ComGate.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\BitBucket\_comgate\.NET-ComGateAPI\THsoftware.ComGate.PaymentAPI.Interfaces\THsoftware.ComGate.PaymentAPI.Interfaces.csproj" />
-    <ProjectReference Include="..\..\..\..\BitBucket\_comgate\.NET-ComGateAPI\THsoftware.ComGate.PaymentAPI.Services\THsoftware.ComGate.PaymentAPI.Services.csproj" />
+    <ProjectReference Include="..\SunamoJson\SunamoJson.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Api\" />
   </ItemGroup>
 
 </Project>
