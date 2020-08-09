@@ -16,20 +16,40 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Payment, lon
 {
     GoPayData goPayData = null;
     static Type type = typeof(SunamoGoPayHelper);
-    public static Dictionary<SessionStateGoPay, string> stateToString = new Dictionary<SessionStateGoPay, string>();
+    public static Dictionary<SessionStateGoPay, string> stateToStringEn = new Dictionary<SessionStateGoPay, string>();
+    public static Dictionary<SessionStateGoPay, string> stateToStringCs = new Dictionary<SessionStateGoPay, string>();
 
     static SunamoGoPayHelper()
     {
         var v = EnumHelper.GetValues<SessionStateGoPay>();
+        string cs = null;
         foreach (var item in v)
         {
-            stateToString.Add(item, ConvertSnakeConvention.FromConvention(item.ToString()));
+            var fromSnake = ConvertSnakeConvention.FromConvention(item.ToString());
+
+            if (fromSnake.Contains(AllStrings.space))
+            {
+                var pascal = ConvertPascalConvention.ToConvention(fromSnake);
+                cs = RLData.cs[ pascal];
+            }
+            else
+            {
+                cs = RLData.cs[ fromSnake];
+            }
+
+            stateToStringCs.Add(item, cs);
+            stateToStringEn.Add(item, fromSnake);
         }
     }
 
     public SunamoGoPayHelper(GoPayData goPayData)
     {
         this.goPayData = goPayData;
+    }
+
+    public object CreatePayment(string orderId, BasePayment payment)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>
@@ -233,6 +253,8 @@ Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD
         return hash;
 
     }
+
+    
     #endregion
 }
 

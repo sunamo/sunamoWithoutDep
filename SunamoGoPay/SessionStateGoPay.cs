@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
+/// <summary>
+/// Must be the same as SessionStateComgate!!!
+/// Is saving to DB 
+/// </summary>
 public enum SessionStateGoPay : byte
 {
     CREATED = 0,

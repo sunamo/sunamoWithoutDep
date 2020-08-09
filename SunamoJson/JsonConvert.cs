@@ -6,7 +6,7 @@ public class JsonConvert
 {
     JavascriptSerialization js = new JavascriptSerialization(SerializationLibrary.Utf8Json);
 
-    internal static T DeserializeObject<T>(string v)
+    public static T DeserializeObject<T>(string v)
     {
         return JsonConvert.DeserializeObject<T>(v);
     }

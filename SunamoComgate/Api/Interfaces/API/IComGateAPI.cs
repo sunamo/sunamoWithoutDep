@@ -9,7 +9,7 @@ namespace THsoftware.ComGate.PaymentAPI.Interfaces.API
 {
 	public interface IComGateApi
 	{
-		Task<ApiResponse<PaymentResponse>> CreatePayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl);
+		ApiResponse<PaymentResponse> CreatePayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl);
 		Task<ApiResponse<PaymentMethodsResponse>> GetAvailebleMethods(string ComGateAPIEndpointUrl);
 	    Task<ApiResponse<PaymentStatusResponse>> GetPaymentStatus(string transId, string ComGateAPIEndpointUrl);
 		Task<ApiResponse<bool>> RefundPayment(string transId, decimal price, ComGate.Core.Domain.Enums.Currency currency, bool test, string ComGateAPIEndpointUrl);

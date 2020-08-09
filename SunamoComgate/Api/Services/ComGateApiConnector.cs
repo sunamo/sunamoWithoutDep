@@ -93,8 +93,12 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 		#endregion
 
 		#region API methods
+		//Task<ApiResponse<PaymentResponse>> IComGateApi.CreatePayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
-		public async Task<ApiResponse<PaymentResponse>> CreatePayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl)
+		public async Task<ApiResponse<PaymentResponse>> CreatePaymentAsync(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl)
 		{
 
 			PaymentRequest paymentRequest = _requestBuilder
@@ -115,6 +119,43 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 				if (response.IsSuccessStatusCode)
 				{
 					var responseContent = await response.Content.ReadAsStringAsync();
+					return _serializer.Deserialize<PaymentResponse>(responseContent);
+				}
+				else
+				{
+					throw new Exception("Cannot create payment");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Is working in selling but not in Apps. Use CreatePayment which use everywhere
+		/// </summary>
+		/// <param name="payment"></param>
+		/// <param name="payer"></param>
+		/// <param name="ComGateAPIEndpointUrl"></param>
+		/// <returns></returns>
+		public ApiResponse<PaymentResponse> CreatePayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl)
+		{
+
+			PaymentRequest paymentRequest = _requestBuilder
+				.CreatePaymentRequest(payment, payer)
+				.SetMerchant(this.Merchant)
+				.SetEnviroment(this.IsTestEnviroment)
+				.SetSecret(this.Secret);
+
+			using (var httpClient = HttpClientFactory.CreateHttpClient(Core.Domain.Enums.ComGateHttpClient.HttpClient))
+			{
+				_paymentLogger.LogPayment(paymentRequest);
+				var content = _serializer.Serialize<PaymentRequest>(paymentRequest);
+
+				httpClient.BaseAddress = new Uri(ComGateAPIEndpointUrl);
+
+				var response =  httpClient.PostAsync("create", content).Result;
+
+				if (response.IsSuccessStatusCode)
+				{
+					var responseContent =  response.Content.ReadAsStringAsync().Result;
 					return _serializer.Deserialize<PaymentResponse>(responseContent);
 				}
 				else
@@ -274,6 +315,8 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 				}
 			}
 		}
-		#endregion
-	}
+
+      
+        #endregion
+    }
 }
