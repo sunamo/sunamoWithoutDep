@@ -5,13 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\Credentials\Scz.import\CmConsts.cs" Link="CmConsts.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SunamoJson\SunamoJson.csproj" />
     <ProjectReference Include="..\SunamoPayments\SunamoPayments.csproj" />
-    <ProjectReference Include="E:\Documents\Visual Studio 2017\Projects\Credentials\Scz\Scz.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,8 @@
-﻿using SunamoPayments;
+﻿using SunamoExceptions;
+using SunamoPayments;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using THsoftware.ComGate.Core.Domain.Enums;
@@ -47,11 +49,12 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 			if (m.StartsWith( ComgateNotTranslateAble.afulStart))
             {
 				var uriManage = ComgateNotTranslateAble.uriManage;
-				var ip = SH.ReplaceAll(m, string.Empty, ComgateNotTranslateAble.afulStart, ComgateNotTranslateAble.afulEnd);
-				ClipboardHelper.SetText(ip);
-				PH.Start(uriManage);
+				var ip = m.Replace(ComgateNotTranslateAble.afulStart, string.Empty);
+				ip = ip.Replace(ComgateNotTranslateAble.afulEnd, string.Empty);
+				//Clipboard.SetText(ip);
+				Process.Start(uriManage);
 
-				DebugLogger.Instance.WriteLine("Insert IP address to " + uriManage);
+				Debug.WriteLine("Insert " +ip+" to " + uriManage);
 				//Access from unauthorized location [37. 188.150.241]!		
 			}
 		}

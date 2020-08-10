@@ -13,7 +13,7 @@ using GoPay.Model.Payments;
 using SunamoPayments;
 using static GoPay.Model.Payments.Target;
 
-public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Payment, long, SessionState>
+public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, SessionState>
 {
     GoPayData goPayData = null;
     static Type type = typeof(SunamoGoPayHelper);
