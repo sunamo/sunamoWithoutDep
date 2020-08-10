@@ -10,18 +10,21 @@ using GoPay;
 using GoPay.Common;
 using GoPay.Model.Payment;
 using GoPay.Model.Payments;
+using SunamoPayments;
 using static GoPay.Model.Payments.Target;
 
-public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Payment, long, Payment.SessionState>
+public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Payment, long, SessionState>
 {
     GoPayData goPayData = null;
     static Type type = typeof(SunamoGoPayHelper);
-    public static Dictionary<SessionStateGoPay, string> stateToStringEn = new Dictionary<SessionStateGoPay, string>();
-    public static Dictionary<SessionStateGoPay, string> stateToStringCs = new Dictionary<SessionStateGoPay, string>();
+    public static Dictionary<SessionState, string> stateToStringEn = new Dictionary<SessionState, string>();
+    public static Dictionary<SessionState, string> stateToStringCs = new Dictionary<SessionState, string>();
 
     static SunamoGoPayHelper()
     {
-        var v = EnumHelper.GetValues<SessionStateGoPay>();
+        
+
+        var v = EnumHelper.GetValues<SessionState>();
         string cs = null;
         foreach (var item in v)
         {
@@ -85,59 +88,56 @@ public class SunamoGoPayHelper : ISunamoPaymentGateway<BasePayment, Payment, lon
         return token;
     }
 
-    public Payment Status(long paymentSessionId)
-    {
-        var token = GetToken();
+//    public Payment PaymentObject(long paymentSessionId)
+//    {
+//        var token = GetToken();
 
-        /*
-Id: 3101079696
-OrderNumber: 128
-State: PAID
-PaymentInstrument: PAYMENT_CARD
-Amount: 10000
-Payer:
-AllowedPaymentInstruments: []
-AllowedSwifts: []
-Contact:
-Email: sunamocz@gmail.com
-CountryCode: CZE
-PaymendCard:
-CardNumber: 418803******0003
-CardExpiration: 2009
-CardBrand: VISA Electron
-CardIssuerCountry: CZE
-CardIssuerBank: KOMERCNI BANKA, A.S.
-Target:
-Type: ACCOUNT
-GoId: 8700421323
-AdditionalParams: []
-Lang: en
-GwUrl: https://gw.sandbox.gopay.com/gw/v3/2857a4bc36190819ec74b34f81b914d1
-EetCode:
-Fik: 30de9ba1-86db-4a70-a4f9-46bcf8efed5a-fa
-Bkp: 05403C98-9690E74B-F75AA761-E34D22EB-CB82D02E
-Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD5Ls0DMPVoPdATZLYVQwrKBpI5GxvuWkUeXCWjYfi/5nQoyyFI4wqRFA9ZwnK+sfTssTnXuWWUK6dU50hwWsqpTP9PbbDhJixkD01qEKXJkPfigcboOWB+I7ng0if+odActpG021OSvkpjuDyK1RIMxPWPuA2wqBb2DB21AXUt+E37ztupwE5YIYOzx3zq4KMeIwNocXYrayez5qoIpwUc3r/Onez0/xNze7d9GrfDv+6Mnn51x/ggNYplKlFS7jEHnK/BkwAeBw==
- */
-        var status = token.PaymentStatus(paymentSessionId);
-        return status;
-    }
+//        /*
+//Id: 3101079696
+//OrderNumber: 128
+//State: PAID
+//PaymentInstrument: PAYMENT_CARD
+//Amount: 10000
+//Payer:
+//AllowedPaymentInstruments: []
+//AllowedSwifts: []
+//Contact:
+//Email: sunamocz@gmail.com
+//CountryCode: CZE
+//PaymendCard:
+//CardNumber: 418803******0003
+//CardExpiration: 2009
+//CardBrand: VISA Electron
+//CardIssuerCountry: CZE
+//CardIssuerBank: KOMERCNI BANKA, A.S.
+//Target:
+//Type: ACCOUNT
+//GoId: 8700421323
+//AdditionalParams: []
+//Lang: en
+//GwUrl: https://gw.sandbox.gopay.com/gw/v3/2857a4bc36190819ec74b34f81b914d1
+//EetCode:
+//Fik: 30de9ba1-86db-4a70-a4f9-46bcf8efed5a-fa
+//Bkp: 05403C98-9690E74B-F75AA761-E34D22EB-CB82D02E
+//Pkp: SUEW0onGqv1mkOhfaxqkNR+880XrX1yPC9f3LDhJK2Bd+oKTD+axM/YDhLhwRj+5Cd10JrokKkD5Ls0DMPVoPdATZLYVQwrKBpI5GxvuWkUeXCWjYfi/5nQoyyFI4wqRFA9ZwnK+sfTssTnXuWWUK6dU50hwWsqpTP9PbbDhJixkD01qEKXJkPfigcboOWB+I7ng0if+odActpG021OSvkpjuDyK1RIMxPWPuA2wqBb2DB21AXUt+E37ztupwE5YIYOzx3zq4KMeIwNocXYrayez5qoIpwUc3r/Onez0/xNze7d9GrfDv+6Mnn51x/ggNYplKlFS7jEHnK/BkwAeBw==
+// */
+//        var status = token.PaymentStatus(paymentSessionId);
+//        return status;
+//    }
 
-    public Payment.SessionState IsPayed(long paymentSessionId)
+    public SessionState Status(string paymentSessionId)
     {
         if (MyPc.Instance.IsMyComputer())
         {
-            return Payment.SessionState.PAID;
+            return SessionState.PAID;
         }
 
-        var payment = Status(paymentSessionId);
-        var state = payment.State;
-        if (state.HasValue)
-        {
-            return state.Value;// == Payment.SessionState.PAID;
-        }
+        var state = Status(paymentSessionId);
+
+        return state;
 
         ThrowExceptions.NotImplementedMethod(Exc.GetStackTrace(), type, Exc.CallingMethod());
-        return Payment.SessionState.AUTHORIZED; //false;
+        return SessionState.AUTHORIZED; //false;
     }
 
     #region MyRegion

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SunamoPayments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace THsoftware.ComGate.Core.Domain.Models
 		public string price { get; set; }
 
 		public Domain.Enums.Currency Currency { get; set; }
-		public Domain.Enums.PaymentState Status { get; set; }
+		public PaymentState Status { get; set; }
 		public Domain.Models.EetData EET { get; set; }
 
 

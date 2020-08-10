@@ -7,9 +7,14 @@
     <Compile Remove="AdminSection.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoPay.NET" Version="1.1.13" />
+    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj" />
+    <ProjectReference Include="..\SunamoPayments\SunamoPayments.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Credentials\Scz\Scz.csproj" />
+    <Folder Include="_\Api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.4" />
   </ItemGroup>
 </Project>

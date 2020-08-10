@@ -5,20 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="E:\Documents\Visual Studio 2017\Projects\sunamo\sunamo\Interfaces\ISunamoPaymentGateway.cs" Link="Interfaces\ISunamoPaymentGateway.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SunamoJson\SunamoJson.csproj" />
+    <ProjectReference Include="..\SunamoPayments\SunamoPayments.csproj" />
     <ProjectReference Include="E:\Documents\Visual Studio 2017\Projects\Credentials\Scz\Scz.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Api\" />
+    <Folder Include="Enums\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
 

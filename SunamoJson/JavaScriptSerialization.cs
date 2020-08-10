@@ -14,7 +14,7 @@ public class JavascriptSerialization : IJsSerializer
     static IJsSerializer systemTextJson = null;
     static IJsSerializer microsoft = null;
     static IJsSerializer danielCrenna = null;
-    static IJsSerializer utf8json = null;
+    public static IJsSerializer utf8json = null;
     static Type type = typeof(JavascriptSerialization);
     private SerializationLibrary sl = SerializationLibrary.Newtonsoft;
 

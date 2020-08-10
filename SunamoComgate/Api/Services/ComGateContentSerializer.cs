@@ -11,6 +11,7 @@ using THsoftware.ComGate.PaymentAPI.Interfaces;
 using THsoftware.ComGate.Core.Domain.Helpers;
 using System.Web;
 using THsoftware.ComGate.Core.Domain.Models.API;
+using SunamoPayments;
 
 namespace THsoftware.ComGate.PaymentAPI.Services
 {
@@ -262,7 +263,7 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 				{
 					price = parsedResponse["price"],
 					email = parsedResponse["email"],
-					Status = (Core.Domain.Enums.PaymentState)Enum.Parse(typeof(Core.Domain.Enums.PaymentState), parsedResponse["status"], true),
+					Status = (PaymentState)Enum.Parse(typeof(PaymentState), parsedResponse["status"], true),
 					Currency = (Core.Domain.Enums.Currency)Enum.Parse(typeof(Core.Domain.Enums.Currency), parsedResponse["curr"], true),
 					fee = parsedResponse["fee"],
 					name = parsedResponse["name"],

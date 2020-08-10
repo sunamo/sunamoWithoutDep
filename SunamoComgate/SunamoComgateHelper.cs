@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SunamoPayments;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,13 +8,8 @@ using THsoftware.ComGate.Core.Domain.Models;
 using THsoftware.ComGate.PaymentAPI.Interfaces.Factories;
 using THsoftware.ComGate.PaymentAPI.Services;
 
-public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, PaymentResponse, long, SessionStateComgate>
+public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, SessionState>
 {
-	//public object CreatePayment(string orderId, BaseComGatePayment payment)
-	//{
-	//	return CreatePaymentWorker(orderId, payment).Result;
-	//}
-
 	public object ParseMessage(string m)
     {
 		return null;
@@ -42,7 +38,7 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Pay
 		// CreatePaymentAsync,CreatePayment - working in Cmd
 		// CreatePayment - working in APp, CreatePaymentAsync - not working in APp
 
-		ApiResponse<PaymentResponse> response =  comGateAPI.CreatePayment(payment, customer, CmConsts.api);
+		ApiResponse<PaymentResponse> response = comGateAPI.CreatePayment(payment, customer, CmConsts.api);
 
         if (response.Response == null)
         {
@@ -89,14 +85,15 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Pay
 		return payment;
 	}
 
-	public SessionStateComgate IsPayed(long paymentSessionId)
+	public SessionState Status(string paymentSessionId)
     {
-        throw new NotImplementedException();
-    }
-
-    public PaymentResponse Status(long paymentSessionId)
-    {
-        throw new NotImplementedException();
+		var st = comGateAPI.GetPaymentStatus(paymentSessionId, CmConsts.api).Result;
+		var r = SessionStateComgateConverter.ConvertTo( st.Response.Status.ToString());
+        if (r.HasValue)
+        {
+			return r.Value;
+        }
+		return SessionState.CREATED;
     }
 
 }
