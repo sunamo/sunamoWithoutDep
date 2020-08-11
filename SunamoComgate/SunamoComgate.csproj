@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\Credentials\Scz.import\CmConsts.cs" Link="CmConsts.cs" />
+    <Compile Include="..\..\Credentials\Scz.import\CmConsts.cs" Link="_\CmConsts.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\" />
-    <Folder Include="Enums\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="_\Api\" />
+    <Folder Include="_\Enums\" />
+    <Folder Include="_\Interfaces\" />
   </ItemGroup>
 
 </Project>

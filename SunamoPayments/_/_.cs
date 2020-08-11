@@ -6,5 +6,9 @@ namespace SunamoPayments
 { 
     public class _
     {
+        void a()
+        {
+            
+        }
     }
 }

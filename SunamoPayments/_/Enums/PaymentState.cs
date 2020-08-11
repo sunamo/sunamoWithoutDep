@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace SunamoPayments
 {
+	/// <summary>
+	/// All must be upper case
+	/// </summary>
 	public enum PaymentState
 	{
 		//Platba byla založená, finální výsledek platby zatím není známý

@@ -17,6 +17,13 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		return null;
     }
 
+	public static SunamoComgateHelper Instance = new SunamoComgateHelper();
+
+    private SunamoComgateHelper()
+    {
+
+    }
+
 	/// <summary>
 	/// Return object is object
 	/// 
@@ -76,7 +83,6 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		comGateAPI.PrepareOnly = true;
 	}
 
-
 	public BaseComGatePayment CreateBasePayment(string orderId)
 	{
 		BasicPaymentViewModel model = new BasicPaymentViewModel { Price = 10, Name = "Name", Email = CmConsts.Email, Label = "Item1" };
@@ -90,7 +96,7 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 
 	public SessionState Status(string paymentSessionId)
     {
-		var st = comGateAPI.GetPaymentStatus(paymentSessionId, CmConsts.api).Result;
+		var st = comGateAPI.GetPaymentStatus(paymentSessionId, CmConsts.api);
 		var r = SessionStateComgateConverter.ConvertTo( st.Response.Status.ToString());
         if (r.HasValue)
         {
@@ -99,4 +105,16 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		return SessionState.CREATED;
     }
 
+    public  string InsertDashes(string transId)
+    {
+		string d = AllStrings.dash;
+
+		if (!transId.Contains(d))
+        {
+			transId = transId.Insert(8, d);
+			transId = transId.Insert(4, d);
+		}
+
+		return transId;
+    }
 }

@@ -1,4 +1,5 @@
-﻿using SunamoPayments;
+﻿using SunamoExceptions;
+using SunamoPayments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,17 @@ public class SessionStateComgateConverter
 {
     public static SessionState? ConvertTo(string value)
     {
+        value = value.ToUpper();
+
         if (value == PaymentState.PENDING.ToString())
         {
             return SessionState.CREATED;
+        }
+
+        //SessionState has CANCELED (1 L), PaymentState has CANCELLED
+        if (value == PaymentState.CANCELLED.ToString())
+        {
+            value = SessionState.CANCELED.ToString();
         }
 
         return (SessionState)Enum.Parse(typeof(SessionState), value);

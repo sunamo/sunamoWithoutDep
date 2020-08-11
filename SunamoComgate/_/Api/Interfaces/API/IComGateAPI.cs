@@ -11,7 +11,7 @@ namespace THsoftware.ComGate.PaymentAPI.Interfaces.API
 	{
 		ApiResponse<PaymentResponse> CreatePayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl);
 		Task<ApiResponse<PaymentMethodsResponse>> GetAvailebleMethods(string ComGateAPIEndpointUrl);
-	    Task<ApiResponse<PaymentStatusResponse>> GetPaymentStatus(string transId, string ComGateAPIEndpointUrl);
+	    ApiResponse<PaymentStatusResponse> GetPaymentStatus(string transId, string ComGateAPIEndpointUrl);
 		Task<ApiResponse<bool>> RefundPayment(string transId, decimal price, ComGate.Core.Domain.Enums.Currency currency, bool test, string ComGateAPIEndpointUrl);
 		Task<ApiResponse<RecurrentPaymentResponse>> RecurrentPayment(BaseComGatePayment payment, Payer payer, string ComGateAPIEndpointUrl);
 		Task<ApiResponse<bool>> CapturePreauth(string transId, string ComGateAPIEndpointUrl);

@@ -193,7 +193,7 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 			}
 		}
 
-		public async Task<ApiResponse<PaymentStatusResponse>> GetPaymentStatus(string transId, string ComGateAPIEndpointUrl)
+		public async Task<ApiResponse<PaymentStatusResponse>> GetPaymentStatusAsync(string transId, string ComGateAPIEndpointUrl)
 		{
 			using (var httpClient = HttpClientFactory.CreateHttpClient(Core.Domain.Enums.ComGateHttpClient.HttpClient))
 			{
@@ -213,6 +213,36 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 				if (response.IsSuccessStatusCode)
 				{
 					var responseContent = await response.Content.ReadAsStringAsync();
+					return _serializer.Deserialize<PaymentStatusResponse>(responseContent);
+				}
+				else
+				{
+					throw new Exception("Cannot create method list");
+				}
+			}
+		}
+		public  ApiResponse<PaymentStatusResponse> GetPaymentStatus(string transId, string ComGateAPIEndpointUrl)
+		{
+			transId = SunamoComgateHelper.Instance.InsertDashes(transId);
+
+			using (var httpClient = HttpClientFactory.CreateHttpClient(Core.Domain.Enums.ComGateHttpClient.HttpClient))
+			{
+
+				PaymentStatusRequest statusRequest = new PaymentStatusRequest()
+					.SetMerchant(this.Merchant)
+					.SetSecret(this.Secret)
+					.SetTransactionId(transId);
+
+
+				var content = _serializer.Serialize<PaymentStatusRequest>(statusRequest);
+
+				httpClient.BaseAddress = new Uri(ComGateAPIEndpointUrl);
+
+				var response = httpClient.PostAsync("status", content).Result;
+
+				if (response.IsSuccessStatusCode)
+				{
+					var responseContent =  response.Content.ReadAsStringAsync().Result;
 					return _serializer.Deserialize<PaymentStatusResponse>(responseContent);
 				}
 				else
