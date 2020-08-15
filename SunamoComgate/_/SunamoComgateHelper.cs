@@ -83,6 +83,8 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		comGateAPI.PrepareOnly = true;
 	}
 
+
+
 	public BaseComGatePayment CreateBasePayment(string orderId)
 	{
 		BasicPaymentViewModel model = new BasicPaymentViewModel { Price = 10, Name = "Name", Email = CmConsts.Email, Label = "Item1" };

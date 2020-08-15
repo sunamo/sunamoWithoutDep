@@ -10,6 +10,7 @@ namespace THsoftware.ComGate.Core.Domain.Enums
 	{
 		CZ,
 		SK,
-		PL
+		PL,
+		ALL
 	}
 }

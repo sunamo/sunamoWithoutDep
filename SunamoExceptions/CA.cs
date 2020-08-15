@@ -1,11 +1,29 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SunamoExceptions { 
     public class CA
     {
+        public static bool IsEqualToAnyElement<T>(T p, params T[] prvky)
+        {
+            return IsEqualToAnyElement(p, prvky.ToList());
+        }
+
+        public static bool IsEqualToAnyElement<T>(T p, IEnumerable<T> list)
+        {
+            foreach (T item in list)
+            {
+                if (EqualityComparer<T>.Default.Equals(p, item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static List<string> RemoveStringsEmpty2(List<string> mySites)
         {
             for (int i = mySites.Count - 1; i >= 0; i--)
