@@ -76,7 +76,7 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 	public SunamoComgateHelper(ComGateData d)
 	{
 		comGateAPI = ComGateApiConnector.CreateConnector()
-		.TestEnviroment()
+		//.TestEnviroment()
 		.SetLang()
 		.SetMerchant(d.merchantId)
 		.SetSecret(d.secret);
