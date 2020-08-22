@@ -73,9 +73,9 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 
 	public ComGateApiConnector comGateAPI = null;
 
-	public SunamoComgateHelper(ComGateData d)
+	public SunamoComgateHelper(ComGateData d, bool isMyPc)
 	{
-		comGateAPI = ComGateApiConnector.CreateConnector()
+		comGateAPI = ComGateApiConnector.CreateConnector(isMyPc)
 		//.TestEnviroment()
 		.SetLang()
 		.SetMerchant(d.merchantId)

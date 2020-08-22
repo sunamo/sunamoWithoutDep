@@ -56,9 +56,15 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 
 		#region Fluent API
 
-		public static ComGateApiConnector CreateConnector()
+		public static ComGateApiConnector CreateConnector(bool isMyPc)
 		{
-			return new ComGateApiConnector();
+
+			var c = new ComGateApiConnector();
+            if (isMyPc)
+            {
+				c.IsTestEnviroment = true;
+            }
+			return c;
 		}
 
 		public ComGateApiConnector SetMerchant(string merchant)
