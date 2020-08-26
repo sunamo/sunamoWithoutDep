@@ -31,16 +31,16 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 	/// <param name="orderId"></param>
 	/// <param name="payment"></param>
 	/// <returns></returns>
-	public object CreatePayment(string orderId, BaseComGatePayment payment)
+	public object CreatePayment(string orderId, BaseComGatePayment payment, params object[] args)
     {
 		Payer customer = new Payer();
-
+		var buyerMail = args[0].ToString();
 		customer.Contact = new Contact()
 		{
-			Email = payment.Account,
-			Name = payment.Account
+			Email = buyerMail,
+			Name = buyerMail
 		};
-
+		
 		//var payment = CreateBasePayment(orderId);
 		payment.PrepareOnly = true;
 
@@ -82,7 +82,7 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		.SetSecret(d.secret);
 		comGateAPI.PrepareOnly = true;
 	}
-	public BaseComGatePayment CreateBasePayment(string orderId, string label, decimal price, string mail)
+	public BaseComGatePayment CreateBasePayment(string orderId, string label, decimal price)
 	{
 		//model.Price
 		var cents = (int)(price * 100);
@@ -92,7 +92,7 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 
 		
 		BaseComGatePayment payment = PaymentFactory.GetBasePayment(cents, orderId, label, PaymentMethods.ALL);
-		payment.Account = mail;
+		
 
 		return payment;
 	}

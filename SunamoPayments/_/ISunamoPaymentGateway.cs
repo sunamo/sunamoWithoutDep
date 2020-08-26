@@ -5,7 +5,7 @@
     /// </summary>
     /// <param name="payment"></param>
     /// <returns></returns>
-    object CreatePayment(string orderId, BasePayment payment);
+    object CreatePayment(string orderId, BasePayment payment, params object[] args);
     /// <summary>
     /// Must be string, not PaymentSessionId, due to in gp is long and in cg string
     /// </summary>
