@@ -37,8 +37,8 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 
 		customer.Contact = new Contact()
 		{
-			Email = CmConsts.Email,
-			Name = CmConsts.Email
+			Email = payment.Account,
+			Name = payment.Account
 		};
 
 		//var payment = CreateBasePayment(orderId);
@@ -82,13 +82,17 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		.SetSecret(d.secret);
 		comGateAPI.PrepareOnly = true;
 	}
-	public BaseComGatePayment CreateBasePayment(string orderId)
+	public BaseComGatePayment CreateBasePayment(string orderId, string label, decimal price, string mail)
 	{
-		BasicPaymentViewModel model = new BasicPaymentViewModel { Price = 10, Name = "Name", Email = CmConsts.Email, Label = "Item1" };
-		model.ReferenceId = orderId;//HttpRequestHelper.GetResponseText(AppsHandlersUri.OrderId(Consts.localhost), HttpMethod.Get, new HttpRequestData { });
+		//model.Price
+		var cents = (int)(price * 100);
 
-		var cents = (int)(model.Price * 100);
-		BaseComGatePayment payment = PaymentFactory.GetBasePayment(cents, model.ReferenceId, model.Label, PaymentMethods.ALL);
+		//BasicPaymentViewModel model = new BasicPaymentViewModel { Price = 10, Name = "Name", Email = CmConsts.Email, Label = "Item1" };
+		//model.ReferenceId = orderId;//HttpRequestHelper.GetResponseText(AppsHandlersUri.OrderId(Consts.localhost), HttpMethod.Get, new HttpRequestData { });
+
+		
+		BaseComGatePayment payment = PaymentFactory.GetBasePayment(cents, orderId, label, PaymentMethods.ALL);
+		payment.Account = mail;
 
 		return payment;
 	}
