@@ -24,6 +24,8 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 
     }
 
+	static Type type = typeof(SunamoComgateHelper);
+
 	/// <summary>
 	/// Return object is object
 	/// 
@@ -34,7 +36,25 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 	public object CreatePayment(string orderId, BaseComGatePayment payment, params object[] args)
     {
 		Payer customer = new Payer();
-		var buyerMail = args[0].ToString();
+
+		string buyerMail = null;
+
+		if (args.Length== 0)
+        {
+            try
+            {
+				ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "args was empty. Is used " + CmConsts.Email);
+			}
+            catch (Exception)
+            {
+            }
+			buyerMail = CmConsts.Email;
+        }
+        else
+        {
+			buyerMail = args[0].ToString();
+		}
+		
 		customer.Contact = new Contact()
 		{
 			Email = buyerMail,
@@ -111,6 +131,12 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
     public  string InsertDashes(string transId)
     {
 		string d = AllStrings.dash;
+
+        if (transId.Length < 8)
+        {
+			ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "transId has less than 8 letters: " + transId);
+
+		}
 
 		if (!transId.Contains(d))
         {
