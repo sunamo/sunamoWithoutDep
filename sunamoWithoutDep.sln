@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sunamo", "..\sunamo\sunamo\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoGoPayFw", "SunamoGoPayFw\SunamoGoPayFw.csproj", "{DB110883-0FA4-4ED4-AC2E-CD2106C755FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoRss", "SunamoRss\SunamoRss.csproj", "{157B8276-B3FF-4A42-86A7-6B3D720A942B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -226,6 +228,14 @@ Global
 		{DB110883-0FA4-4ED4-AC2E-CD2106C755FF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB110883-0FA4-4ED4-AC2E-CD2106C755FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{DB110883-0FA4-4ED4-AC2E-CD2106C755FF}.Release|x86.Build.0 = Release|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Debug|x86.Build.0 = Debug|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Release|x86.ActiveCfg = Release|Any CPU
+		{157B8276-B3FF-4A42-86A7-6B3D720A942B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
