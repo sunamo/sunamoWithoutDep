@@ -10,9 +10,9 @@ namespace SunamoRss
 {
     public class RssHelper
     {
-        public static List<Tuple<string, string, DateTimeOffset>> Latest5PostsFromRss(string filePath)
+        public static List<Tuple<string, string, string, DateTimeOffset>> Latest5PostsFromRss(string filePath)
         {
-            List<Tuple<string, string, DateTimeOffset>> result = new List<Tuple<string, string, DateTimeOffset>>();
+            List<Tuple<string, string, string, DateTimeOffset>> result = new List<Tuple<string, string, string, DateTimeOffset>>();
 
             using (var xmlReader = XmlReader.Create(filePath, new XmlReaderSettings()))
             {
@@ -25,7 +25,7 @@ namespace SunamoRss
                         // Read Item
                         case SyndicationElementType.Item:
                             ISyndicationItem item = feedReader.ReadItem().Result; //AsyncHelper.ci.GetResult(feedReader.ReadItem());
-                            result.Add(new Tuple<string, string, DateTimeOffset>(item.Title, item.Links.First().Uri.ToString(), item.Published));
+                            result.Add(new Tuple<string, string, string, DateTimeOffset>(item.Title, item.Links.First().Uri.ToString(), item.Description, item.Published));
                             break;
 
                             #region MyRegion
