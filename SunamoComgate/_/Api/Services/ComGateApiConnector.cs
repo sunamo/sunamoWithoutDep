@@ -72,7 +72,7 @@ namespace THsoftware.ComGate.PaymentAPI.Services
 			this.Merchant = merchant;
 			return this;
 		}
-		public ComGateApiConnector TestEnviroment(bool IsTest = true)
+		public ComGateApiConnector TestEnviroment(bool IsTest)
 		{
 			this.IsTestEnviroment = IsTest;
 			return this;
