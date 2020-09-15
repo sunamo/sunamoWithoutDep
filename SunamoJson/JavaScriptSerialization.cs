@@ -51,7 +51,29 @@ public class JavascriptSerialization : IJsSerializer
 
     public string Serialize<T>(T o)
     {
-        return utf8json.Serialize(o);
+        var v = string.Empty;
+        int i = 0;
+        while (true)
+        {
+            if (i == 50)
+            {
+                return "error:More than 50 repetities in JavaScriptSerialization.Serialize";
+            }
+
+            try
+            {
+                v = utf8json.Serialize(o);
+                
+            }
+            catch (Exception)
+            {
+                i++;
+                continue;
+            }
+            break;
+        }
+        return v;
+        
         //if (sl == SerializationLibrary.JsonDanielCrenna)
         //{
             // must be called as static, otherwise during serialize return empty string

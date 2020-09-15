@@ -120,6 +120,14 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 	public SessionState Status(string paymentSessionId)
     {
 		var st = comGateAPI.GetPaymentStatus(paymentSessionId, CmConsts.api);
+
+		if (st.Response == null)
+		{
+			// TODO: Remove completely from table - musím dát pozor zda nehledám production objednávku na testingu a opačně
+
+			return SessionState.TIMEOUTED;
+		}
+
 		var r = SessionStateComgateConverter.ConvertTo( st.Response.Status.ToString());
         if (r.HasValue)
         {
