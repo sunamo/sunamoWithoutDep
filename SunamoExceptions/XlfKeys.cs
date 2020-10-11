@@ -6,6 +6,6 @@ namespace SunamoExceptions
 {
     public class XlfKeys
     {
-        internal static string isNotInWindowsPathFormat = "isNotInWindowsPathFormat";
+        public static string isNotInWindowsPathFormat = "isNotInWindowsPathFormat";
     }
 }

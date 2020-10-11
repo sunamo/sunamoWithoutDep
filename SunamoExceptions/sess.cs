@@ -8,7 +8,7 @@ namespace SunamoExceptions
     {
         static Type type = typeof(sess);
 
-        internal static string i18n(string k)
+        public static string i18n(string k)
         {
             switch (k)
             {
