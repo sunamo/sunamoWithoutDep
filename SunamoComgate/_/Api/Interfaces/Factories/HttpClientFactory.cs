@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SunamoExceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -29,14 +30,13 @@ namespace THsoftware.ComGate.PaymentAPI.Interfaces.Factories
 
 		private static HttpClient CreateHttpClientWithFiddler(object param)
 		{
-			WebProxy proxy = new WebProxy("127.0.0.1:8888");
+			WebProxy proxy = new WebProxy(Consts.localhostIp + ":8888");
 			try
 			{
 				proxy = param as WebProxy;
 			}
 			catch (Exception ex)
 			{
-				
 			}
 
 			
