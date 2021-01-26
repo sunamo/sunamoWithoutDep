@@ -12,5 +12,6 @@ namespace SunamoExceptions
         public const char dash = '-';
         public const char qm = '"';
         public const char emDash = '—';
+        public const char bs = '\\';
     }
 }

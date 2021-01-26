@@ -12,5 +12,6 @@ namespace SunamoExceptions
         public const string colon = ":";
         public const string dash = "-";
         public const string space = " ";
+        public const string bs = "\\";
     }
 }
