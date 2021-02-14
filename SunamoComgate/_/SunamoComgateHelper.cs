@@ -108,7 +108,7 @@ public class SunamoComgateHelper : ISunamoPaymentGateway<BaseComGatePayment, Ses
 		var cents = (int)(price * 100);
 
 		//BasicPaymentViewModel model = new BasicPaymentViewModel { Price = 10, Name = "Name", Email = CmConsts.Email, Label = "Item1" };
-		//model.ReferenceId = orderId;//HttpRequestHelper.GetResponseText(AppsHandlersUri.OrderId(Consts.localhost), HttpMethod.Get, new HttpRequestData { });
+		//model.ReferenceId = orderId;//HttpClientHelper.GetResponseText(AppsHandlersUri.OrderId(Consts.localhost), HttpMethod.Get, new HttpRequestData { });
 
 		
 		BaseComGatePayment payment = PaymentFactory.GetBasePayment(cents, orderId, label, PaymentMethods.ALL);
