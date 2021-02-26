@@ -140,6 +140,11 @@ public class JavascriptSerialization : IJsSerializer
 
     public object Deserialize(String o, Type targetType)
     {
+        if (string.IsNullOrEmpty(o))
+        {
+            ThrowExceptions.IsNullOrEmpty(Exc.GetStackTrace(), type, Exc.CallingMethod(), "o", o);
+        }
+
         if (sl == SerializationLibrary.Utf8Json)
         {
             return utf8json.Deserialize(o, targetType);
@@ -150,13 +155,15 @@ public class JavascriptSerialization : IJsSerializer
         }
         else if (sl == SerializationLibrary.Microsoft)
         {
+            #region MyRegion
             //JsonConvert.DeserializeObject()
             //JsonValue.
             //var serializer = new DataContractJsonSerializer(typeof(T));
             //serializer.P
             //T library = (T)serializer.ReadObject(o);
             //return T;
-            //return js.Deserialize<T>(o);
+            //return js.Deserialize<T>(o); 
+            #endregion
 
             return utf8json.Deserialize(o, targetType);
         }

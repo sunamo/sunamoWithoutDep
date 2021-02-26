@@ -13,5 +13,7 @@ namespace SunamoExceptions
         public const string dash = "-";
         public const string space = " ";
         public const string bs = "\\";
+        internal static string comma = ",";
+        internal static string sc = ";";
     }
 }

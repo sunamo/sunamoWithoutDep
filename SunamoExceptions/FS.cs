@@ -54,7 +54,35 @@ namespace SunamoExceptions
 
         public static List<string> GetFiles(string path, string v, SearchOption topDirectoryOnly)
         {
-            return Directory.GetFiles(path, v, topDirectoryOnly).ToList();
+            return FS.GetFilesMoreMasc(path, v, topDirectoryOnly).ToList();
+        }
+
+        public static List<string> GetFilesMoreMasc(string path, string v, SearchOption topDirectoryOnly)
+        {
+            var c = AllStrings.comma;
+            var sc = AllStrings.sc;
+            List<string> result = new List<string>();
+            List<string> masks = new List<string>();
+
+            if (v.Contains(c))
+            {
+                masks.AddRange(SH.Split(v, c));
+            }
+            else if (v.Contains(sc))
+            {
+                masks.AddRange(SH.Split(v, sc));
+            }
+            else
+            {
+                masks.Add(v);
+            }
+
+            foreach (var item in masks)
+            {
+                result.AddRange(Directory.GetFiles(path, item, topDirectoryOnly));
+            }
+
+            return result;
         }
 
         public static string GetFileName(string file)
