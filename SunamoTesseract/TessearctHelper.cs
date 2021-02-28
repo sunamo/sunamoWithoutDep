@@ -165,7 +165,7 @@ namespace SunamoTesseract
                 if (process.ExitCode == 0)
                 {
                     // Exit code: success.
-                    output = File.ReadAllText(tempOutputFile + ".txt");
+                    output = FS.ReadAllText(tempOutputFile + ".txt");
                 }
                 else
                 {
