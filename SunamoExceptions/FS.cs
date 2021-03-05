@@ -140,6 +140,11 @@ namespace SunamoExceptions
             }
         }
 
+        public static string ReadAllText(string filename)
+        {
+            return TF.ReadAllText(filename);
+        }
+
         #region MyRegion
         private static string GetDirectoryName(string nad)
         {
