@@ -10,6 +10,9 @@
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>sunamo.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="..\sunamo\Essential\ExcShared.cs" Link="ExcShared.cs" />
   </ItemGroup>
