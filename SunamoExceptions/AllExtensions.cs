@@ -9,5 +9,7 @@ namespace SunamoExceptions
     public class AllExtensions
     {
         public const string xlf = ".xlf";
+        public static string jpg = ".jpg";
+        public static string webp = ".webp";
     }
 }

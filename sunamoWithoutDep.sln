@@ -50,6 +50,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoRss", "SunamoRss\Suna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoIIS", "SunamoIIS\SunamoIIS.csproj", "{E8C1BAA0-359E-4EE7-9AE0-1E275690C80D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoMime", "ClassLibrary1\SunamoMime.csproj", "{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -246,6 +248,14 @@ Global
 		{E8C1BAA0-359E-4EE7-9AE0-1E275690C80D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8C1BAA0-359E-4EE7-9AE0-1E275690C80D}.Release|x86.ActiveCfg = Release|Any CPU
 		{E8C1BAA0-359E-4EE7-9AE0-1E275690C80D}.Release|x86.Build.0 = Release|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Debug|x86.Build.0 = Debug|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Release|x86.ActiveCfg = Release|Any CPU
+		{0BAD9BFE-F844-4E42-8A29-04124BD5C68A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
