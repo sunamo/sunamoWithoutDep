@@ -1,5 +1,4 @@
-﻿using FileSignatures;
-using MimeDetective;
+﻿using MimeDetective;
 using SunamoExceptions;
 using System;
 using System.Collections.Generic;
@@ -10,12 +9,12 @@ public class SunamoMimeHelper
     {
     static Dictionary<string, List<byte>> my4 = new Dictionary<string, List<byte>>();
 
-    static void Init()
+    public static void Init()
     {
         my4.Add("webp", new List<byte>(new byte[] { 82, 73, 70, 70 }));
     }
 
-        public static string FileType(List<byte> b)
+        public static string FileType(Byte[] b)
     {
         var f4 = b.Take(4);
         foreach (var item in my4)
@@ -29,11 +28,6 @@ public class SunamoMimeHelper
         //var stream = new MemoryStream(b);
         //var format = inspector.DetermineFileFormat(stream);
         //return format.Extension;
-
-        if (true)
-        {
-
-        }
 
         var ft = b.GetFileType();
         return ft.Extension;
