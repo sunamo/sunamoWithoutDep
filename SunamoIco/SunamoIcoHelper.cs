@@ -111,4 +111,3 @@ using System.IO;
             return icon;
         }
     }
-
