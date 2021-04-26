@@ -65,7 +65,7 @@ public class JavascriptSerialization : IJsSerializer
                 v = utf8json.Serialize(o);
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 i++;
                 continue;

@@ -19,7 +19,6 @@
     <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SunamoExceptions\SunamoExceptions.csproj" />
