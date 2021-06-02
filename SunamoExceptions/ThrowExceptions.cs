@@ -8,6 +8,11 @@ namespace SunamoExceptions
     {
 static Type type = typeof(ThrowExceptions);
         #region For easy copy in SunamoException project
+        public static void NotImplementedMethod(string stacktrace, object type, string methodName)
+        {
+            ThrowIsNotNull(stacktrace, Exceptions.NotImplementedMethod(FullNameOfExecutedCode(type, methodName)));
+        }
+
         /// <summary>
         /// A1 have to be Dictionary<T,U>, not IDictionary without generic
         /// </summary>
@@ -67,10 +72,7 @@ static Type type = typeof(ThrowExceptions);
         }
 
         static string dot = ".";
-        public static void NotImplementedMethod(string stacktrace, object type, string methodName)
-        {
-            ThrowIsNotNull(stacktrace, Exceptions.NotImplementedMethod(FullNameOfExecutedCode(type, methodName)));
-        }
+        
 
         /// <summary>
         /// First can be Method base, then A2 can be anything
@@ -182,5 +184,7 @@ static Type type = typeof(ThrowExceptions);
             return true;
         }
         #endregion
+
+
     }
 }

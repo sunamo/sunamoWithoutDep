@@ -14,10 +14,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\sunamo\Essential\ExcShared.cs" Link="ExcShared.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\sunamo\Essential\ExceptionsShared.cs" Link="ExceptionsShared.cs" />
     <None Include="..\sunamo\Essential\ThrowExceptionsShared.cs" Link="ThrowExceptionsShared.cs" />
   </ItemGroup>
   <ItemGroup>

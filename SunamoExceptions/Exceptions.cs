@@ -8,6 +8,13 @@ namespace SunamoExceptions
     {
         public static bool RaiseIsNotWindowsPathFormat;
 
+
+
+        public static object NotImplementedMethod(string before)
+        {
+            return CheckBefore(before) + SunamoExceptionsNotTranslateAble.NotImplementedCasePublicProgramErrorPleaseContactDeveloper + ".";
+        }
+
         #region For easy copy in SunamoException project
         public static object KeyNotFound<T, U>(string v, IDictionary<T, U> en, string dictName, T key)
         {
@@ -89,10 +96,7 @@ namespace SunamoExceptions
             return CheckBefore(before) + message;
         }
 
-        public static object NotImplementedMethod(string before)
-        {
-            return CheckBefore(before) + "Not implemented case. public program error. Please contact developer" + ".";
-        }
+        
         private static string CheckBefore(string before)
         {
             if (string.IsNullOrWhiteSpace(before))

@@ -11,11 +11,63 @@ namespace SunamoExceptions
     {
         private static Type type = typeof(FS);
 
+        private static long ConvertToSmallerComputerUnitSize(long value, ComputerSizeUnits b, ComputerSizeUnits to)
+        {
+            return ConvertToSmallerComputerUnitSize(value, b, to);
+        }
+
         public static bool? ExistsDirectoryNull(string d)
         {
             return Directory.Exists(d);
         }
 
+        public static string GetSizeInAutoString(long value, ComputerSizeUnits b)
+        {
+            if (b != ComputerSizeUnits.B)
+            {
+                // Získám hodnotu v bytech
+                value = ConvertToSmallerComputerUnitSize(value, b, ComputerSizeUnits.B);
+            }
+
+
+            if (value < 1024)
+            {
+                return value + " B";
+            }
+
+            double previous = value;
+            value /= 1024;
+
+            if (value < 1)
+            {
+                return previous + " B";
+            }
+
+            previous = value;
+            value /= 1024;
+
+            if (value < 1)
+            {
+                return previous + " KB";
+            }
+
+            previous = value;
+            value /= 1024;
+            if (value < 1)
+            {
+                return previous + " MB";
+            }
+
+            previous = value;
+            value /= 1024;
+
+            if (value < 1)
+            {
+                return previous + " GB";
+            }
+
+            return value + " TB";
+        }
         public static bool IsWindowsPathFormat(string argValue)
         {
             if (string.IsNullOrWhiteSpace(argValue))

@@ -48,9 +48,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoIIS", "SunamoIIS\Suna
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoMime", "SunamoMIme\SunamoMime.csproj", "{E309A73E-E70D-4192-BF75-00E4C9351A4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoPayApi", "GoPayApi\GoPayApi.csproj", "{2F1C6999-CBD7-452D-BFE9-B21650B9E54C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoPayApi", "GoPayApi\GoPayApi.csproj", "{2F1C6999-CBD7-452D-BFE9-B21650B9E54C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoPayApiFw", "GoPayApiFw\GoPayApiFw.csproj", "{D325D161-C017-4416-8E6D-BD3371513563}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "..\sunamo\Resources\Resources.csproj", "{3204432D-B6E7-4481-BEB0-8B177AF809C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -258,6 +260,14 @@ Global
 		{D325D161-C017-4416-8E6D-BD3371513563}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D325D161-C017-4416-8E6D-BD3371513563}.Release|x86.ActiveCfg = Release|Any CPU
 		{D325D161-C017-4416-8E6D-BD3371513563}.Release|x86.Build.0 = Release|Any CPU
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Debug|x86.ActiveCfg = Debug|x86
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Debug|x86.Build.0 = Debug|x86
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Release|x86.ActiveCfg = Release|x86
+		{3204432D-B6E7-4481-BEB0-8B177AF809C2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

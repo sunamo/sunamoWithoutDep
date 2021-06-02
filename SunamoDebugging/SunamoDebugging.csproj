@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="FrameworkElementDebug.cs" />
     <Compile Include="GridDebug.cs" />
+    <Compile Include="MemoryDebug.cs" />
     <Compile Include="NameValueCollectionDebug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shared\Http\HttpRequestHelperDebug.cs" />
