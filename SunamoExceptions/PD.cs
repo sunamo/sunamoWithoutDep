@@ -8,7 +8,7 @@ using System.Text;
 public class PD
 {
      static bool showMbDebug = true;
-    public static Action<string> delShowMb;
+    public static Action<string> delShowMb = null;
 
     public static void ShowMb(string v)
     {
