@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#if MEMORYDEBUG
 public class MemoryDebug
 {
     public static StreamWriter swAllocatedMemory;
@@ -43,3 +44,4 @@ public class MemoryDebug
         swAllocatedMemory.WriteLine("Difference between first and latest: " + FS.GetSizeInAutoString(l, ComputerSizeUnits.B));
     }
 }
+#endif
