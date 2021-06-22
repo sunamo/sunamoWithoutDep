@@ -496,12 +496,12 @@ namespace GoPay
 
         public struct ServerHandlerData
         {
-            public long ContentLength { get; public set; }
-            public HttpStatusCode HttpStatusCode { get; public set; }
-            public byte[] Body { get; public set; }
-            public string StatusDescription { get; public set; }
-            public string ContentEncoding { get; public set; }
-            public string ContentType { get; public set; }
+            public long ContentLength { get; set; }
+            public HttpStatusCode HttpStatusCode { get; set; }
+            public byte[] Body { get; set; }
+            public string StatusDescription { get; set; }
+            public string ContentEncoding { get; set; }
+            public string ContentType { get; set; }
         }
 
         public ServerHandlerData ResponseToSHD(IRestResponse response)
