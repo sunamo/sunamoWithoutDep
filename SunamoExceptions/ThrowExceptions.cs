@@ -59,6 +59,8 @@ static Type type = typeof(ThrowExceptions);
             ThrowIsNotNull(stacktrace, Exceptions.ArgumentOutOfRangeException(FullNameOfExecutedCode(type, methodName, true), paramName, message));
         }
 
+        
+
         public static void IsNull(string stacktrace, object type, string methodName, string variableName, object variable = null)
         {
             ThrowIsNotNull(stacktrace, Exceptions.IsNull(FullNameOfExecutedCode(type, methodName, true), variableName, variable));
@@ -144,6 +146,16 @@ static Type type = typeof(ThrowExceptions);
                 return false;
             }
             return true;
+        }
+
+        public static void NotFoundTranslationKeyWithCustomError(string stacktrace, object type, string methodName, string message)
+        {
+            Custom(stacktrace, type, methodName, message);
+        }
+
+        public static void NotFoundTranslationKeyWithoutCustomError(string stacktrace, object type, string methodName, string message)
+        {
+            Custom(stacktrace, type, methodName, message);
         }
 
         public static void Custom(string stacktrace, object type, string methodName, string message)
